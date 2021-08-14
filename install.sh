@@ -24,11 +24,11 @@ RedBG="\033[41;37m"
 Font="\033[0m"
 
 #notification information
-# Info="${Green}[信息]${Font}"
+# Info="${Green}[information]${Font}"
 OK="${Green}[OK]${Font}"
-Error="${Red}[错误]${Font}"
+Error="${Red}[Mistake]${Font}"
 
-# 版本
+# Version
 shell_version="1.1.8.4"
 shell_mode="None"
 github_branch="master"
@@ -80,7 +80,7 @@ check_system() {
         echo -e "${OK} ${GreenBG} The current system is Debian ${VERSION_ID} ${VERSION} ${Font}"
         INS="apt"
         $INS update
-        ## 添加 Nginx apt源
+        ## Add to Nginx apt source
     elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
         echo -e "${OK} ${GreenBG} The current system is Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME} ${Font}"
         INS="apt"
@@ -90,7 +90,7 @@ check_system() {
         rm /var/cache/apt/archives/lock
         $INS update
     else
-        echo -e "${Error} ${RedBG} The current system is ${ID} ${VERSION_ID} 不在支持的系统列表内，Install中断 ${Font}"
+        echo -e "${Error} ${RedBG} The current system is ${ID} ${VERSION_ID} Not in the list of supported systems，Install Interrupt ${Font}"
         exit 1
     fi
 
@@ -98,11 +98,11 @@ check_system() {
 
     systemctl stop firewalld
     systemctl disable firewalld
-    echo -e "${OK} ${GreenBG} firewalld 已关闭 ${Font}"
+    echo -e "${OK} ${GreenBG} firewalld closed ${Font}"
 
     systemctl stop ufw
     systemctl disable ufw
-    echo -e "${OK} ${GreenBG} ufw 已关闭 ${Font}"
+    echo -e "${OK} ${GreenBG} ufw closed ${Font}"
 }
 
 is_root() {
